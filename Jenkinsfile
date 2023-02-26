@@ -46,7 +46,7 @@ pipeline {
      stage('Deploy') {
      steps{  
          script {
-             withKubeCredentials(kubectlCredentials: [[caCertificate: '', clusterName: 'Deploy_python', contextName: '', credentialsId: 'jenkins-agent', namespace: 'jenkins', serverUrl: 'https://98062742F2B284731920FB6DA5583248.gr7.ap-south-1.eks.amazonaws.com']]) {
+             withKubeCredentials(kubectlCredentials: [[caCertificate: '', clusterName: 'Deploy_python', contextName: '', credentialsId: 'k8s', namespace: 'dev', serverUrl: 'https://98062742F2B284731920FB6DA5583248.gr7.ap-south-1.eks.amazonaws.com']]) {
                 sh "helm upgrade --install python-flask-app python_app/ -f python_app/values.yaml -n dev"
              }
              }
